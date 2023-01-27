@@ -11,6 +11,7 @@ import Deployer from './Deployer';
 const code = JSON.stringify(OrderbookFactoryV1InputJson);
 
 interface Properties {
+  treasury: string;
   addressBook: string;
   address: string;
   setAddress: (addressBook: string) => void;
@@ -21,27 +22,27 @@ interface Properties {
 }
 
 export default function OrderbookFactoryDeployer({
-  addressBook, address, setAddress, verifyURL, verifyKey, onMessage = console.log, onError = console.error
+  treasury, addressBook, address, setAddress, verifyURL, verifyKey, onMessage = console.log, onError = console.error
 }: Properties) {
 
-  const deployable = useMemo(() => isAddress(addressBook), [ addressBook ]);
+  const deployable = useMemo(() => isAddress(treasury) && isAddress(addressBook), [ treasury, addressBook ]);
 
   const deployContract = useCallback(async (abortSignal?: AbortSignal) => {
     const abortify = createAbortifier(abortSignal);
-    return (await abortify(OrderbookFactoryV1.deploy(addressBook))).address;
-  }, [ addressBook]);
+    return (await abortify(OrderbookFactoryV1.deploy(treasury, addressBook))).address;
+  }, [ treasury, addressBook ]);
 
   const getDeployedCode = useCallback(async (abortSignal?: AbortSignal) => {
     const abortify = createAbortifier(abortSignal);
-    return await abortify(OrderbookFactoryV1.callStatic.deploy(addressBook));
-  }, [ addressBook ]);
+    return await abortify(OrderbookFactoryV1.callStatic.deploy(treasury, addressBook));
+  }, [ treasury, addressBook ]);
 
   const getCtorArgs = useCallback(() => {
     return abiencode(
-      [ 'address' ],
-      [ addressBook ]
+      [ 'address', 'address' ],
+      [ treasury, addressBook ]
     ).slice(2);
-  }, [ addressBook ]);
+  }, [ treasury, addressBook ]);
 
   return (
     <Deployer

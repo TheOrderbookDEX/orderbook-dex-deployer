@@ -42,16 +42,18 @@ export default function OrderbookDeployer({
 
   const getDeployedCode = useCallback(async (abortSignal?: AbortSignal) => {
     const abortify = createAbortifier(abortSignal);
+    const treasury = await abortify(OrderbookFactoryV1.at(orderbookFactory).treasury());
     const addressBook = await abortify(OrderbookFactoryV1.at(orderbookFactory).addressBook());
-    return await abortify(OrderbookV1.callStatic.deploy(addressBook, tradedToken, baseToken, contractSize, priceTick));
+    return await abortify(OrderbookV1.callStatic.deploy(treasury, addressBook, tradedToken, baseToken, contractSize, priceTick));
   }, [ orderbookFactory, tradedToken, baseToken, contractSize, priceTick ]);
 
   const getCtorArgs = useCallback(async (abortSignal?: AbortSignal) => {
     const abortify = createAbortifier(abortSignal);
+    const treasury = await abortify(OrderbookFactoryV1.at(orderbookFactory).treasury());
     const addressBook = await abortify(OrderbookFactoryV1.at(orderbookFactory).addressBook());
     return abiencode(
-      [ 'address', 'address', 'address', 'uint256', 'uint256' ],
-      [ addressBook, tradedToken, baseToken, contractSize, priceTick ]
+      [ 'address', 'address', 'address', 'address', 'uint256', 'uint256' ],
+      [ treasury, addressBook, tradedToken, baseToken, contractSize, priceTick ]
     ).slice(2);
   }, [ orderbookFactory, tradedToken, baseToken, contractSize, priceTick ]);
 

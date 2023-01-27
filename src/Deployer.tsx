@@ -2,7 +2,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { asyncEffect, copy, useAbortSignal } from './utils';
 import { useEffect, useState, useCallback, useMemo, ReactNode } from 'react';
 import { CompilerVersion, LicenseType, verifyContract } from './etherscan';
-import { getCode, isAddress } from './ethereum';
+import { getCode, isAddress, isSameCode } from './ethereum';
 import { Message } from './Messages';
 import TaskCheck from './TaskCheck';
 import TaskButton from './TaskButton';
@@ -16,6 +16,7 @@ interface Properties {
   deployable: boolean;
   deployContract(abortSignal?: AbortSignal): Promise<string>;
   getDeployedCode(abortSignal?: AbortSignal): Promise<string>;
+  codeTolerance?: number;
   getCtorArgs(abortSignal?: AbortSignal): Promise<string> | string | undefined;
   code: string;
   contract: string;
@@ -41,9 +42,9 @@ export default function Deployer(props: Properties) {
   const abortSignal = useAbortSignal(Object.values(props));
 
   const {
-    title, address, setAddress, deployable, deployContract, getDeployedCode, getCtorArgs,
-    code, contract, compiler, license, verifyURL, verifyKey, onMessage = console.log,
-    onError = console.error, children
+    title, address, setAddress, deployable, deployContract, getDeployedCode,
+    codeTolerance = 0, getCtorArgs, code, contract, compiler, license, verifyURL,
+    verifyKey, onMessage = console.log, onError = console.error, children
   } = props;
 
   const copyAddress = useCallback(() => {
@@ -71,7 +72,7 @@ export default function Deployer(props: Properties) {
     try {
       const code = await getCode(address, abortSignal);
       const expected = await getDeployedCode(abortSignal);
-      setDeployed(code === expected);
+      setDeployed(isSameCode(code, expected, codeTolerance));
 
     } catch (error) {
       onError(error);
@@ -79,7 +80,7 @@ export default function Deployer(props: Properties) {
     } finally {
       setLoading(false);
     }
-  }), [ address, getDeployedCode, onError ]);
+  }), [ address, getDeployedCode, codeTolerance, onError ]);
 
   const deploy = useCallback(async () => {
     setLoading(true);

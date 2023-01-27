@@ -47,6 +47,16 @@ export async function getCode(address: string, abortSignal?: AbortSignal): Promi
   return await abortify(ethereum.request({ method: 'eth_getCode', params: [address] }));
 }
 
+export function isSameCode(a: string, b: string, tolerance: number): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) diff++;
+    if (diff > tolerance) return false;
+  }
+  return true;
+}
+
 // We need these to interact directly with ganache to set the account balance
 
 export async function getDevBalance(abortSignal?: AbortSignal): Promise<bigint> {

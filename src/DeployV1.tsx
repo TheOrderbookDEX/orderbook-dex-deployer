@@ -13,6 +13,7 @@ import OrderbookDeployer from './OrderbookDeployer';
 import OperatorFactoryDeployer from './OperatorFactoryDeployer';
 import OperatorV1Deployer from './OperatorV1Deployer';
 import EtherscanAPIKey from './EtherscanAPIKey';
+import TreasuryDeployer from './TreasuryDeployer';
 
 const ONE_DAY = 24n * 60n * 60n;
 
@@ -38,6 +39,7 @@ export default function DeployV1({ onMessage = console.log, onError = console.er
 
   const [ verifyKey, setVerifyKey ] = useState('');
 
+  const [ treasury, setTreasury ] = useState('');
   const [ addressBook, setAddressBook ] = useState('');
   const [ orderbookFactory, setOrderbookFactory ] = useState('');
   const [ WBTC, setWBTC ] = useState('');
@@ -73,6 +75,16 @@ export default function DeployV1({ onMessage = console.log, onError = console.er
             />
           }
 
+          <TreasuryDeployer
+            chainId={chainId}
+            address={treasury}
+            setAddress={setTreasury}
+            verifyURL={verifyURL}
+            verifyKey={verifyKey}
+            onMessage={onMessage}
+            onError={onError}
+          />
+
           <AddressBookDeployer
             address={addressBook}
             setAddress={setAddressBook}
@@ -83,6 +95,7 @@ export default function DeployV1({ onMessage = console.log, onError = console.er
           />
 
           <OrderbookFactoryDeployer
+            treasury={treasury}
             addressBook={addressBook}
             address={orderbookFactory}
             setAddress={setOrderbookFactory}
