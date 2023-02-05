@@ -1,11 +1,19 @@
 {
   "name": "@theorderbookdex/orderbook-dex-deployer",
-  "version": "0.1.0",
+  "version": "1.0.0-rc.1",
   "description": "This is just an adhoc app to help deploy The Orderbook DEX",
   "license": "BUSL-1.1",
   "author": "The Orderbook DEX Team",
   "repository": "https://github.com/TheOrderbookDEX/orderbook-dex-deployer.git",
   "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others --raw \"node rpc-server.js\" \"react-scripts start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc"
+  },
   "dependencies": {
     "@frugal-wizard/abi2ts-lib": "^0.8.0",
     "@frugal-wizard/addressbook": "1.6.0",
@@ -48,14 +56,6 @@
     "tsconfig-paths@3.14.1": {
       "json5": "^2.2.1"
     }
-  },
-  "scripts": {
-    "start": "concurrently --kill-others --raw \"node rpc-server.js\" \"react-scripts start\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext .ts,.tsx",
-    "typecheck": "tsc"
   },
   "browserslist": {
     "production": [
