@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { Message } from './Messages';
 import { isAddress } from './ethereum';
 import { CompilerVersion, LicenseType } from './etherscan';
-import { abiencode } from '@frugal-wizard/abi2ts-lib';
+import { abiencode } from '@frugalwizard/abi2ts-lib';
 import { OrderbookFactoryV1 } from '@theorderbookdex/orderbook-dex-v1/dist/OrderbookFactoryV1';
 import { OrderbookCreated } from '@theorderbookdex/orderbook-dex/dist/interfaces/IOrderbookFactory';
 import { OrderbookV1 } from '@theorderbookdex/orderbook-dex-v1/dist/OrderbookV1';

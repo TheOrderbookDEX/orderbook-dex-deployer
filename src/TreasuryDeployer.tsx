@@ -7,7 +7,7 @@ import TreasuryInputJson from '@theorderbookdex/orderbook-dex-team-treasury/arti
 import Deployer from './Deployer';
 import { deployConfig } from './deploy-config';
 import { ChainId } from './ethereum';
-import { abiencode } from '@frugal-wizard/abi2ts-lib';
+import { abiencode } from '@frugalwizard/abi2ts-lib';
 
 const code = JSON.stringify(TreasuryInputJson);
 

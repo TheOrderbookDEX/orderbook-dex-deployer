@@ -1,4 +1,4 @@
-import { getAccounts, hexstring } from '@frugal-wizard/abi2ts-lib';
+import { getAccounts, hexstring } from '@frugalwizard/abi2ts-lib';
 import { createAbortifier } from './utils';
 
 export interface Ethereum {

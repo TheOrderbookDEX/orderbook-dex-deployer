@@ -2,7 +2,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { useEffect, useState, useCallback } from 'react';
 import TaskCheck from './TaskCheck';
 import { asyncEffect, useAbortSignal } from './utils';
-import { formatValue } from '@frugal-wizard/abi2ts-lib';
+import { formatValue } from '@frugalwizard/abi2ts-lib';
 import { getDevBalance, setDevBalance } from './ethereum';
 import TaskButton from './TaskButton';
 import TaskText from './TaskText';

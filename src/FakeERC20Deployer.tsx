@@ -2,7 +2,7 @@ import { createAbortifier } from './utils';
 import { useCallback } from 'react';
 import { Message } from './Messages';
 import { CompilerVersion, LicenseType } from './etherscan';
-import { abiencode } from '@frugal-wizard/abi2ts-lib';
+import { abiencode } from '@frugalwizard/abi2ts-lib';
 import { ERC20WithFaucet } from '@theorderbookdex/orderbook-dex/dist/testing/ERC20WithFaucet';
 import ERC20WithFaucetInputJson from '@theorderbookdex/orderbook-dex/artifacts/testing/ERC20WithFaucet.input.json';
 import Deployer from './Deployer';

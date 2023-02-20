@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { asyncEffect } from './utils';
 import { ChainId, getChainId } from './ethereum';
 import { getVerifyURL } from './etherscan';
-import { parseValue } from '@frugal-wizard/abi2ts-lib';
+import { parseValue } from '@frugalwizard/abi2ts-lib';
 import { Message } from './Messages';
 import AddressBookDeployer from './AddressBookDeployer';
 import AccountBalance from './AccountBalance';

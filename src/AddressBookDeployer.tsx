@@ -2,8 +2,8 @@ import { createAbortifier } from './utils';
 import { useCallback } from 'react';
 import { Message } from './Messages';
 import { CompilerVersion, LicenseType } from './etherscan';
-import { AddressBook } from '@frugal-wizard/addressbook/dist/AddressBook';
-import AddressBookInputJson from '@frugal-wizard/addressbook/artifacts/AddressBook.input.json';
+import { AddressBook } from '@frugalwizard/addressbook/dist/AddressBook';
+import AddressBookInputJson from '@frugalwizard/addressbook/artifacts/AddressBook.input.json';
 import Deployer from './Deployer';
 
 const code = JSON.stringify(AddressBookInputJson);

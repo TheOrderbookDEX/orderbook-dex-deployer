@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { Message } from './Messages';
 import { CompilerVersion, LicenseType } from './etherscan';
 import { getAccount, isAddress } from './ethereum';
-import { abiencode } from '@frugal-wizard/abi2ts-lib';
+import { abiencode } from '@frugalwizard/abi2ts-lib';
 import { OperatorFactory } from '@theorderbookdex/orderbook-dex-operator/dist/OperatorFactory';
 import OperatorFactoryInputJson from '@theorderbookdex/orderbook-dex-operator/artifacts/OperatorFactory.input.json';
 import Deployer from './Deployer';
