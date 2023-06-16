@@ -4,6 +4,7 @@ import { sleep } from './utils';
 export enum CompilerVersion {
   V0_8_15 = 'v0.8.15+commit.e14f2714',
   V0_8_17 = 'v0.8.17+commit.8df45f5f',
+  V0_8_20 = 'v0.8.20+commit.a1b79de6',
 }
 
 export enum LicenseType {
@@ -18,6 +19,9 @@ export function getVerifyURL(chainId: number): string {
 
     case ChainId.GOERLI:
       return 'https://api-goerli.etherscan.io/api';
+
+    case ChainId.SEPOLIA:
+      return 'https://api-sepolia.etherscan.io/api';
 
     default:
       return '';

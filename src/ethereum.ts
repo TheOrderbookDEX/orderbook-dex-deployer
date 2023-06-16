@@ -25,8 +25,9 @@ export function isAddress(value: string): boolean {
 }
 
 export enum ChainId {
-  MAINNET = 1,
-  GOERLI = 5,
+  MAINNET   = 1,
+  GOERLI    = 5,
+  SEPOLIA   = 11155111,
   LOCALHOST = 1337,
 }
 

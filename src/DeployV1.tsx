@@ -33,7 +33,7 @@ export default function DeployV1({ onMessage = console.log, onError = console.er
     setLoading(false);
   }), []);
 
-  const testnet = useMemo(() => [ ChainId.LOCALHOST, ChainId.GOERLI ].includes(chainId), [ chainId ]);
+  const testnet = useMemo(() => [ ChainId.LOCALHOST, ChainId.GOERLI, ChainId.SEPOLIA ].includes(chainId), [ chainId ]);
 
   const verifyURL = useMemo(() => getVerifyURL(chainId), [ chainId ]);
 

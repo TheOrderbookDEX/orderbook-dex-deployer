@@ -55,7 +55,7 @@ export default function OrderbookFactoryDeployer({
       getCtorArgs={getCtorArgs}
       code={code}
       contract='OrderbookFactoryV1.sol:OrderbookFactoryV1'
-      compiler={CompilerVersion.V0_8_17}
+      compiler={CompilerVersion.V0_8_20}
       license={LicenseType.BSL1_1}
       verifyURL={verifyURL}
       verifyKey={verifyKey}

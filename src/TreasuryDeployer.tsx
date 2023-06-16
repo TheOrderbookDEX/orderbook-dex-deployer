@@ -56,7 +56,7 @@ export default function TreasuryDeployer({
       getCtorArgs={getCtorArgs}
       code={code}
       contract='OrderbookDEXTeamTreasury.sol:OrderbookDEXTeamTreasury'
-      compiler={CompilerVersion.V0_8_17}
+      compiler={CompilerVersion.V0_8_20}
       license={LicenseType.BSL1_1}
       verifyURL={verifyURL}
       verifyKey={verifyKey}

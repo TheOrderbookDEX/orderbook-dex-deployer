@@ -46,7 +46,7 @@ export default function OperatorV1Deployer({
       getCtorArgs={getCtorArgs}
       code={code}
       contract='OperatorV1.sol:OperatorV1'
-      compiler={CompilerVersion.V0_8_17}
+      compiler={CompilerVersion.V0_8_20}
       license={LicenseType.MIT}
       verifyURL={verifyURL}
       verifyKey={verifyKey}

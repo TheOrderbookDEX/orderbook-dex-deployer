@@ -44,7 +44,7 @@ export default function AddressBookDeployer({
       getCtorArgs={getCtorArgs}
       code={code}
       contract='AddressBook.sol:AddressBook'
-      compiler={CompilerVersion.V0_8_17}
+      compiler={CompilerVersion.V0_8_20}
       license={LicenseType.MIT}
       verifyURL={verifyURL}
       verifyKey={verifyKey}

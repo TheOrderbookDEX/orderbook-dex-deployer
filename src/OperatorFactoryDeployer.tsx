@@ -57,7 +57,7 @@ export default function OperatorFactoryDeployer({
       getCtorArgs={getCtorArgs}
       code={code}
       contract='OperatorFactory.sol:OperatorFactory'
-      compiler={CompilerVersion.V0_8_17}
+      compiler={CompilerVersion.V0_8_20}
       license={LicenseType.BSL1_1}
       verifyURL={verifyURL}
       verifyKey={verifyKey}
